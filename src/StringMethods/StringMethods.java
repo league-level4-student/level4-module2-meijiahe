@@ -54,37 +54,66 @@ public class StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
-		
-		return null;
+		String [] s1a=s1.trim().split(" ");
+		String [] s2a=s2.trim().split(" ");
+		String [] s3a=s3.trim().split(" ");
+		if (s1a[1].compareToIgnoreCase(s3a[1])<0&&s1a[1].compareToIgnoreCase(s2a[1])<0) {
+			return s1.trim();
+		}
+		if (s3a[1].compareToIgnoreCase(s1a[1])<0&&s3a[1].compareToIgnoreCase(s2a[1])<0) {
+			return s3.trim();
+		}
+		else {
+			return s2.trim();
+		}
 	}
 	
 	
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-		return 0;
+		int sum=0;
+		for (int i=0;i<s.length();i++) {
+			char ch = s.charAt(i);
+			if (Character.isDigit(ch)) {
+				int cc =Character.getNumericValue(ch);
+				sum = cc+sum;
+			}
+		}
+	
+		
+		return sum;
 	}
 	
 	
 	// Return the number of times String substring appears in String s
 	public static int substringCount(String s, String substring) {
-		return 0;
+		int count = 0;
+		while (s.contains(substring)) {
+				count++;
+		s =	s.replaceFirst(substring, "");
+		}
+		return count;
 	}
 
 	// Call Utitilities.encrypt to encrypt String s
 	public static String encrypt(String s, char key) {
-		return null;
+	String ss =	Utilities.encrypt(s.getBytes(), (byte)key);
+		return ss;
 	}
 
 	// Call Utilities.decrypt to decrypt the cyphertext
 	public static String decrypt(String s, char key) {
-		return null;
+		 String q =Utilities.decrypt(s,(byte) key);
+		return q;
 	}
 
 
 	// Return the number of words in String s that end with String substring
 	// You can assume there are no punctuation marks between words
 	public static int wordsEndsWithSubstring(String s, String substring) {
+		
 		return 0;
+		
 	}
 	
 
