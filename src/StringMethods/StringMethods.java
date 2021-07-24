@@ -140,10 +140,16 @@ public class StringMethods {
 	// HINT: ignore/remove all punctuation and spaces in the String
 	public static boolean palindrome(String s) {
 		String rev = "";
+		String forward = "";
 		for (int i=s.length()-1;i>=0;i--) {
-			rev = rev+s.charAt(i);
-		}
-		if (rev.equals(s)) {
+			char letter = s.charAt(i);
+			if(Character.isLetter(letter)) {
+				rev = rev+letter;
+				forward = letter+forward;
+			}
+		}	
+	
+		if (rev.toLowerCase().equals(forward.toLowerCase())) {
 			return true;
 		}
 		return false;
